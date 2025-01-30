@@ -1,7 +1,7 @@
 # Sales Dashboard
 
 ### Summary
-The sales dashboard project was created to enhance internet sales reporting by moving from static reports to dynamic visual dashboards. The dashboard tracks sales by product and cutomer, alklows filtering by sales representatives, and compares perfomance against the budget. Data was cleansed and transformed using SQL, and the resulting Power BI dashboard provides a comprehensive view of sales trends, enabling bettera nalysis and decision-making for sales managers and representatives.
+The sales dashboard project was created to enhance internet sales reporting by moving from static reports to dynamic visual dashboards. The dashboard tracks sales by product and customer, alows filtering by sales representatives, and compares perfomance against the budget. Data was cleansed and transformed using SQL, and the resulting Power BI dashboard provides a comprehensive view of sales trends, enabling bettera nalysis and decision-making for sales managers and representatives.
 
 ### Business Request & User Stories
 #### Business Request
@@ -17,6 +17,12 @@ As a result of the received request, the following stories were created:
 | 3 | Sales Representative| A detailed overview of Internet Sales per Product|Can follow up my Products that sell the most | A Power BI dashboard which allows me to filter data for each Product.|
 | 4 | Sales Manager | A dashboard overview of internet sales | A dashboard overview of internet sales | Follow sales over time against budget | A Power BI dashboard with graphs and KPIs comparing against budget. | 
 
+
+#### Tools and Libraries Used
+- **MSSQL (SQL Server Management Studio) (SSMS)**
+- **Microsoft Power BI**
+
+
 #### Data Cleaning & Transformation (SQL)
 To create the necessary data model for the analysis to fulfill the business needs, the following tables were extracted using SQL. 
 
@@ -27,6 +33,7 @@ Below are the SQL statements for cleansing and transforming necessary data.
 ```
 Code
 ```
+
 
 #### Data Model
 The subsequent data model was produced
