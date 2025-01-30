@@ -14,6 +14,6 @@ During the project, the following tasks were performed:
 
 The following files are included in this repository:
 
-- - ![**SQL Data Cleaning Project**](): SQL script containing the code for data cleaning and transformation tasks performed during the project.
+- - ![**SQL Data Cleaning Project**](sql_data_cleaning_project.sql): SQL script containing the code for data cleaning and transformation tasks performed during the project.
 
 - - ![**Cleaned Dataset**](): The cleaned dataset resulting from the data cleaning and trasnformation process.
