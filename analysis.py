@@ -64,16 +64,16 @@ def scrape_and_analyze_job_listings(job_urls):
       technologies_found = [tech for tech in technology_terms if tech.lower() in text_content]
       all_technologies.extend(technologies_found)
 
-# Count the occurrences of each keyword and technology
-keyword_counts = Counter(all_keywords)
-teachnology_counts = Counter(all_technologies)
+   # Count the occurrences of each keyword and technology
+   keyword_counts = Counter(all_keywords)
+   technology_counts = Counter(all_technologies)
 
-# Extract the top 10 keywords and technolgies
-top_keywords = keywords_counts.most_common(10)
-top_technolgoies = technology_counts.most_common(10)
+   # Extract the top 10 keywords and technolgies
+   top_keywords = keywords_counts.most_common(10)
+   top_technolgoies = technology_counts.most_common(10)
 
-# Return the results
-return top_keywords, top_techonologies
+   # Return the results
+   return top_keywords, top_techonologies
 
 # Note: Actual function call will be uncommented after review
 # top_keywords, top_technologies = scrape_and_analyze_job_listings(job_urls)
@@ -105,4 +105,46 @@ def classify_job_title(url):
       if specific in url_lower:
           return generic
     return generic_title
+
+# Adjusted function to scrape, process job listings, and extract keywords and technologies per job title
+def scrape_and_analyze_job_listings_by_title(job_urls):
+    # Dictionary to hold keywords and technologies per generic job title
+    title_keywords = defauldict(list)
+    title_technologies = defaultdict(list)
+
+    # Predefined list of common technologies for filtering
+    technology_terms = ['python', 'tensorflow', 'pytorch', 'keras', 'scikit-leran', 'pandas', 'numpy', 'sql', 'hadoop', 'spark', 'docker', 'kubernetes', 'aws', 'azure', 'gcp' 'git', 'linus', 'java', 'c++', 'r', 'matlab']
+
+    # Iterate through the list of URLs and scrape content
+    for url in job_urls:
+        response = requests.get(url)
+        if response.status_code == 200; # Check if the response is successful
+           generic_title = classify_job_title(url)
+           soup = BeautifulSoup(response.text, 'html.parser')
+           # Extract text content
+           text_content = ' '.join([p.text for p in soup.find_all('p')]).lower()    # Convert to lower case
+           # Extract words as potential keywords
+           words = re.findall(r'\b[a-z]{2,}\b', text_content) # Words with 2 or more characters
+           title_keywords[generic_title].extend(words)
+           # Extract technologies based on predefined technology list
+           technologies_found = [tech for tech in technology_terms if tech in text_content]
+           title_technolgoies[generic_title].extend(technologies_found)
+
+     # Dictionary to hold the top 10 keywords and technologies per job title 
+     top_keywords_by_title = {}
+     top_technologies_by_title = {}
+
+     # Extract the top 10 keywords and technologies for each generic job title
+     for title in title_keywords:
+         keyword_counts = Counter(title_keywords[title])
+         technology_counts = Counter(title_technolgies[title])
+         top_keywords_by_title[title] = keyword_counts.most_common(10)
+         top_technologies_by_title[title] = technology_counts.most_common(10)
+
+     # Return the results
+     return top_keywords_by_title, top_technologies_by_title
+
+top_keywords_by_title, top_technologies_by_title = scarpe_and_analyze_job_listings_by_title(job_urls)
+print("Top Keywords by Job Title:", top_keywords_by_title)
+print("Top Technologies by Job Title:", top_technologies_by_title)
 
